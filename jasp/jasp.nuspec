@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
+    <id>jasp</id>
+    <title>jasp (Install)</title>
+    <version>0.7.1.12</version>
+    <authors>Jonathon Love, Ravi Selker, Maarten Marsman, Tahira Jamil, Damian Dropmann, A. Josine Verhagen, Alexander Ly, Quentin F. Gronau, Martin Smira, Sacha Epskamp, Dora Matzke, A. Wild, J. N. Rouder, Richard D. Morey, Eric-Jan Wagenmakers</authors>
+    <owners>JASP</owners>
+    <summary>JASP aims to be a complete statistical package for both Bayesian and Frequentist statistical methods, that is easy to use and familiar to users of SPSS.</summary>
+    <description>
+JASP aims to be a complete statistical package for both Bayesian and Frequentist statistical methods, that is easy to use and familiar to users of SPSS.
+
+#Features
+
+- Descriptive Statistics
+- Plots
+- Independent Samples T-Test
+- Paired Samples T-Test
+- One Sample T-Test
+- Levene’s Test
+- ANOVA
+- ANCOVA
+- Repeated Measures ANOVA
+- Contingency Tables
+- Pearson’s Correlation
+- Spearman Correlation
+- Kendall’s Tau-B
+- Linear Regression
+- Bayesian Indepedent Samples T-Test
+- Bayesian Paired Samples T-Test
+- Bayesian One Sample T-Test
+- Bayesian ANOVA
+- Bayesian ANCOVA
+- Bayesian Repeated Measures ANOVA
+- Bayesian Linear Regression
+- Bayesian Contingency Tables
+- Bayesian Correlation Tables
+
+#Coming soon!
+
+- Bayesian Sensitivity Analysis
+- MAN(C)OVA
+
+#Limitations
+
+- Currently only imports .csv files (but what else would a scientist use?!)
+- Currently no data editing, cleaning, or restructuring facilities (Edit your data in Excel, LibreOffice or R first)
+    </description>
+    <projectUrl>http://jasp-stats.org/</projectUrl>
+    <packageSourceUrl>https://github.com/jasp-stats/jasp-desktop</packageSourceUrl>
+    <docsUrl>https://jasp-stats.org/user-guide/</docsUrl>
+    <tags>jasp statistics spss r bayesian</tags>
+    <copyright></copyright>
+    <licenseUrl>https://gnu.org/licenses/agpl.html</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>http://cdn.rawgit.com/adamblake/chocolatey-packages/master/icons/jasp.png</iconUrl>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
