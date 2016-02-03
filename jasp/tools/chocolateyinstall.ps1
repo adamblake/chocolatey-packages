@@ -14,9 +14,8 @@ $packageArgs = @{
   url           = $url
   url64bit      = $url64
 
-  silentArgs    = "/qn /norestart /l*v `"$env:TEMP\chocolatey\$($packageName)\$($packageName).MsiInstall.log`""
-  validExitCodes= @(0, 3010, 1641)
   silentArgs   = '/S'
+  validExitCodes= @(0)
 
   softwareName  = 'JASP*'
   checksum      = '5154cdb7a75118639908a189e45ef667'

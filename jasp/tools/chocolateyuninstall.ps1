@@ -6,19 +6,15 @@ $packageName = 'jasp'
 $softwareName = 'JASP*'
 $installerType = 'EXE' 
 
-$silentArgs = '/qn /norestart'
-$validExitCodes = @(0, 3010, 1605, 1614, 1641)
-if ($installerType -ne 'MSI') {
-  $silentArgs = '/S'
-  $validExitCodes = @(0)
-}
+$silentArgs = '/S'
+$validExitCodes = @(0)
 
 $uninstalled = $false
 $local_key     = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*'
 $machine_key   = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*'
 $machine_key6432 = 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*'
 
-$key = Get-ItemProperty -Path @($machine_key6432,$machine_key, $local_key) `
+[array]$key = Get-ItemProperty -Path @($machine_key6432,$machine_key, $local_key) `
                         -ErrorAction SilentlyContinue `
          | ? { $_.DisplayName -like "$softwareName" }
 
