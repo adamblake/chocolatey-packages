@@ -12,41 +12,41 @@
     <description>
 JASP aims to be a complete statistical package for both Bayesian and Frequentist statistical methods, that is easy to use and familiar to users of SPSS.
 
-#Features
+# Features
 
-- Descriptive Statistics
-- Plots
-- Independent Samples T-Test
-- Paired Samples T-Test
-- One Sample T-Test
-- Levene’s Test
-- ANOVA
-- ANCOVA
-- Repeated Measures ANOVA
-- Contingency Tables
-- Pearson’s Correlation
-- Spearman Correlation
-- Kendall’s Tau-B
-- Linear Regression
-- Bayesian Indepedent Samples T-Test
-- Bayesian Paired Samples T-Test
-- Bayesian One Sample T-Test
-- Bayesian ANOVA
-- Bayesian ANCOVA
-- Bayesian Repeated Measures ANOVA
-- Bayesian Linear Regression
-- Bayesian Contingency Tables
-- Bayesian Correlation Tables
+* Descriptive Statistics
+* Plots
+* Independent Samples T-Test
+* Paired Samples T-Test
+* One Sample T-Test
+* Levene’s Test
+* ANOVA
+* ANCOVA
+* Repeated Measures ANOVA
+* Contingency Tables
+* Pearson’s Correlation
+* Spearman Correlation
+* Kendall’s Tau-B
+* Linear Regression
+* Bayesian Indepedent Samples T-Test
+* Bayesian Paired Samples T-Test
+* Bayesian One Sample T-Test
+* Bayesian ANOVA
+* Bayesian ANCOVA
+* Bayesian Repeated Measures ANOVA
+* Bayesian Linear Regression
+* Bayesian Contingency Tables
+* Bayesian Correlation Tables
 
-#Coming soon!
+# Coming soon!
 
-- Bayesian Sensitivity Analysis
-- MAN(C)OVA
+* Bayesian Sensitivity Analysis
+* MAN(C)OVA
 
-#Limitations
+# Limitations
 
-- Currently only imports .csv files (but what else would a scientist use?!)
-- Currently no data editing, cleaning, or restructuring facilities (Edit your data in Excel, LibreOffice or R first)
+* Currently only imports .csv files (but what else would a scientist use?!)
+* Currently no data editing, cleaning, or restructuring facilities (Edit your data in Excel, LibreOffice or R first)
     </description>
     <projectUrl>http://jasp-stats.org/</projectUrl>
     <packageSourceUrl>https://github.com/jasp-stats/jasp-desktop</packageSourceUrl>
