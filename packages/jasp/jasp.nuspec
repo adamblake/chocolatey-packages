@@ -3,9 +3,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
-    <id>jasp</id>
-    <title>jasp (Install)</title>
-    <version>0.7.1.12</version>
+    <id>{{PackageName}}</id>
+    <title>{{PackageName}} (Install)</title>
+    <version>{{PackageVersion}}</version>
     <authors>Jonathon Love, Ravi Selker, Maarten Marsman, Tahira Jamil, Damian Dropmann, A. Josine Verhagen, Alexander Ly, Quentin F. Gronau, Martin Smira, Sacha Epskamp, Dora Matzke, A. Wild, J. N. Rouder, Richard D. Morey, Eric-Jan Wagenmakers</authors>
     <owners>JASP</owners>
     <summary>JASP aims to be a complete statistical package for both Bayesian and Frequentist statistical methods, that is easy to use and familiar to users of SPSS.</summary>
@@ -51,7 +51,7 @@ JASP aims to be a complete statistical package for both Bayesian and Frequentist
     <projectUrl>http://jasp-stats.org/</projectUrl>
     <packageSourceUrl>https://github.com/jasp-stats/jasp-desktop</packageSourceUrl>
     <docsUrl>https://jasp-stats.org/user-guide/</docsUrl>
-    <tags>jasp statistics spss r bayesian</tags>
+    <tags>{{PackageName}} statistics spss r bayesian</tags>
     <copyright></copyright>
     <licenseUrl>https://gnu.org/licenses/agpl.html</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
