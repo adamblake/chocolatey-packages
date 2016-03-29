@@ -7,7 +7,9 @@
     <id>{{PackageName}}</id>
     <version>{{PackageVersion}}</version>
     <authors>JASP</authors>
+    <owners>adamblake</owners>
     <projectUrl>http://jasp-stats.org/</projectUrl>
+    <projectSourceUrl>https://github.com/jasp-stats/jasp-desktop</projectSourceUrl>
     <iconUrl>http://cdn.rawgit.com/adamblake/chocolatey-packages/master/icons/jasp.png</iconUrl>
     <licenseUrl>https://gnu.org/licenses/agpl.html</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -51,9 +53,9 @@ JASP aims to be a complete statistical package for both Bayesian and Frequentist
 * Currently only imports .csv files (but what else would a scientist use?!)
 * Currently no data editing, cleaning, or restructuring facilities (Edit your data in Excel, LibreOffice or R first)
     </description>
-    <tags>{{PackageName}} statistics spss r bayesian</tags>
-    <releaseNotes></releaseNotes>
-    <packageSourceUrl>https://github.com/jasp-stats/jasp-desktop</packageSourceUrl>
+    <tags>{{PackageName}} statistics spss r bayesian admin</tags>
+    <releaseNotes>https://jasp-stats.org/download/</releaseNotes>
+    <packageSourceUrl>https://github.com/adamblake/chocolatey-packages/</packageSourceUrl>
     <docsUrl>https://jasp-stats.org/user-guide/</docsUrl>
   </metadata>
   <files>
