@@ -1,32 +1,14 @@
 ﻿$ErrorActionPreference = 'Stop';
-
 $packageName = 'jasp'
 $softwareName = 'JASP*'
 $installerType = 'EXE' 
-
 $silentArgs = '/S'
 $validExitCodes = @(0)
-
 $uninstalled = $false
-$local_key     = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*'
-$machine_key   = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*'
-$machine_key6432 = 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*'
-
-[array]$key = Get-ItemProperty -Path @($machine_key6432, $machine_key, $local_key) `
-                               -exclude "nbi-nb-base-*" `
-                               -ErrorAction SilentlyContinue `
-            | ? { $_.DisplayName -like "$softwareName" }
-
+[array]$key = Get-UninstallRegistryKey -SoftwareName $softwareName
 if ($key.Count -eq 1) {
   $key | % { 
     $file = "$($_.UninstallString)"
-
-    if ($installerType -eq 'MSI') {
-      $silentArgs = "$($_.PSChildName) $silentArgs"
-
-      $file = ''
-    }
-
     Uninstall-ChocolateyPackage -PackageName $packageName `
                                 -FileType $installerType `
                                 -SilentArgs "$silentArgs" `
