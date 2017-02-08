@@ -2,61 +2,37 @@
 <!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
-    <title>JASP</title>
-    <id>{{PackageName}}</id>
-    <version>{{PackageVersion}}</version>
-    <authors>JASP</authors>
+    <!-- == PACKAGE SPECIFIC SECTION == -->
+    <id>jasp</id>
+    <version>0.8.0.1</version>
+    <packageSourceUrl>https://github.com/adamblake/chocolatey-packages/</packageSourceUrl>
     <owners>adamblake</owners>
+
+    <!-- == SOFTWARE SPECIFIC SECTION == -->
+    <title>JASP</title>
+    <authors>JASP</authors>
     <projectUrl>http://jasp-stats.org/</projectUrl>
-    <projectSourceUrl>https://github.com/jasp-stats/jasp-desktop</projectSourceUrl>
     <iconUrl>http://cdn.rawgit.com/adamblake/chocolatey-packages/master/icons/jasp.png</iconUrl>
+    <!-- <copyright>Year Software Vendor</copyright> -->
     <licenseUrl>https://gnu.org/licenses/agpl.html</licenseUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/jasp-stats/jasp-desktop</projectSourceUrl>
+    <docsUrl>https://jasp-stats.org/user-guide/</docsUrl>
+    <bugTrackerUrl>https://github.com/jasp-stats/jasp-desktop/issues</bugTrackerUrl>
+    <tags>jasp statistics spss r bayesian admin</tags>
     <summary>JASP aims to be a complete statistical package for both Bayesian and Frequentist statistical methods, that is easy to use and familiar to users of SPSS.</summary>
     <description>
-JASP aims to be a complete statistical package for both Bayesian and Frequentist statistical methods, that is easy to use and familiar to users of SPSS.
+# What is JASP?
+JASP is a fresh way to do statistics. Completely free, open-source, and cross-platform, JASP allows its users to conduct statistical analyses with ease, using a spreadsheet layout and a familiar drag-and-drop interface. JASP features popular classical analysis tools such as ANOVA and regression, but also contains their Bayesian counterparts. 
 
-# Features
+# Why use JASP?
+JASP offers many advantages over popular competing packages. Compared to commercial packages such as SPSS, JASP is free, open-source, actively developed, and includes Bayesian methods for parameter estimation and hypothesis testing. Compared to free packages such as R, JASP offers a smooth “drag and drop” user experience that removes the requirement of computer programming that many students and practitioners experience as burdensome and distracting. Compared to all other packages, the JASP base package off ers a targeted and popular series of tests, both in their classical and Bayesian manifestations.
 
-* Descriptive Statistics
-* Plots
-* Independent Samples T-Test
-* Paired Samples T-Test
-* One Sample T-Test
-* Levene’s Test
-* ANOVA
-* ANCOVA
-* Repeated Measures ANOVA
-* Contingency Tables
-* Pearson’s Correlation
-* Spearman Correlation
-* Kendall’s Tau-B
-* Linear Regression
-* Bayesian Indepedent Samples T-Test
-* Bayesian Paired Samples T-Test
-* Bayesian One Sample T-Test
-* Bayesian ANOVA
-* Bayesian ANCOVA
-* Bayesian Repeated Measures ANOVA
-* Bayesian Linear Regression
-* Bayesian Contingency Tables
-* Bayesian Correlation Tables
-
-# Coming soon!
-
-* Bayesian Sensitivity Analysis
-* MAN(C)OVA
-
-# Limitations
-
-* Currently only imports .csv files (but what else would a scientist use?!)
-* Currently no data editing, cleaning, or restructuring facilities (Edit your data in Excel, LibreOffice or R first)
+# Cite JASP, please :)
+One of the best ways that you can support the JASP project is by citing it. Citations are an important measure of how widely software is used, and an important indicator to funding bodies of JASP’s relevance. At present, there are no publications you can cite for JASP (there are several in the pipeline, however!). For now, we suggest you use:
+JASP Team (2016). JASP (Version 0.8.0.1)[Computer software].
     </description>
-    <tags>{{PackageName}} statistics spss r bayesian admin</tags>
     <releaseNotes>https://jasp-stats.org/download/</releaseNotes>
-    <packageSourceUrl>https://github.com/adamblake/chocolatey-packages/</packageSourceUrl>
-    <docsUrl>https://jasp-stats.org/user-guide/</docsUrl>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
