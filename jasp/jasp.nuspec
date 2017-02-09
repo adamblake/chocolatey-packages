@@ -12,7 +12,7 @@
     <title>JASP</title>
     <authors>JASP</authors>
     <projectUrl>http://jasp-stats.org/</projectUrl>
-    <iconUrl>http://cdn.rawgit.com/adamblake/chocolatey-packages/master/jasp/icon.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/adamblake/chocolatey-packages/073b37dd/jasp/icon.png</iconUrl>
     <!-- <copyright>Year Software Vendor</copyright> -->
     <licenseUrl>https://gnu.org/licenses/agpl.html</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
