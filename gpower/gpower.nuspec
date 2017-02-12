@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <!-- == PACKAGE SPECIFIC SECTION == -->
+    <id>gpower</id>
+    <version></version>
+    <packageSourceUrl>https://github.com/adamblake/chocolatey-packages/</packageSourceUrl>
+    <owners>adamblake</owners>
+
+    <!-- == SOFTWARE SPECIFIC SECTION == -->
+    <title>G*Power</title>
+    <authors>Axel Buchner, Edgar Erdfelder, Franz Faul, Albert-Georg Lang</authors>
+    <projectUrl>http://www.gpower.hhu.de/en.html</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/adamblake/chocolatey-packages/d9eedc69/gpower/icon.png</iconUrl>
+    <copyright>1992-2014</copyright>
+    <licenseUrl>http://www.gpower.hhu.de/</licenseUrl>
+    <!-- <requireLicenseAcceptance>true</requireLicenseAcceptance> -->
+    <!-- <projectSourceUrl></projectSourceUrl> -->
+    <docsUrl>http://www.gpower.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Psychologie/AAP/gpower/GPowerManual.pdf</docsUrl>
+    <mailingListUrl>https://lists.uni-duesseldorf.de/mailman/listinfo/register-gpower</mailingListUrl>
+    <bugTrackerUrl>gpower-feedback@hhu.de</bugTrackerUrl>
+    <tags>gpower statistics power effect size admin</tags>
+    <summary>G*Power is a tool to compute statistical power analyses for many different inferential tests.</summary>
+    <description>
+# What is G*Power?
+G*Power is a tool to compute statistical power analyses for many different *t* tests, *F* tests, *χ*2 tests, *z* tests and some exact tests. G*Power can also be used to compute effect sizes and to display graphically the results of power analyses.
+
+# References
+If you use G\*Power for your research, then please include one or both of the following references (depending on what is appropriate) to the program in the papers in which you publish your results:
+
+Faul, F., Erdfelder, E., Lang, A.-G., & Buchner, A. (2007). G\*Power 3: A flexible statistical power analysis program for the social, behavioral, and biomedical sciences. *Behavior Research Methods, 39*, 175-191. [Download PDF](http://www.gpower.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Psychologie/AAP/gpower/GPower3-BRM-Paper.pdf)
+
+Faul, F., Erdfelder, E., Buchner, A., & Lang, A.-G. (2009). Statistical power analyses using G\*Power 3.1: Tests for correlation and regression analyses. *Behavior Research Methods, 41*, 1149-1160. [Download PDF](http://www.gpower.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Psychologie/AAP/gpower/GPower31-BRM-Paper.pdf)
+    </description>
+    <releaseNotes>http://www.gpower.hhu.de/en.html</releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
