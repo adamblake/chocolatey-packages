@@ -1,6 +1,6 @@
 import-module au
 
-$releases = 'http://www.gpower.hhu.de'
+$releases = [System.Uri]'http://www.gpower.hhu.de/'
 
 function global:au_SearchReplace {
     @{
@@ -16,10 +16,10 @@ function global:au_GetLatest {
   
   # GPowerWin_3.1.9.2.zip
   $re = 'GPowerWin_.+.zip$'
-  $rel_url = $download_page.links | ? href -match $re | select -First 1 -expand href
-  $url = "$releases$rel_url"
-  $version = $url -split '_|.zip' | select -Last 1 -Skip 1
-  return @{ Version = $version; URL32 = $url }
+  $rel_uri = $download_page.links | ? href -match $re | select -First 1 -expand href
+  $uri = (New-Object -TypeName 'System.Uri' -ArgumentList $releases, $rel_uri)
+  $version = $uri -split '_|.zip' | select -Last 1 -Skip 1
+  return @{ Version = $version; URL32 = $uri }
 }
 
 update
