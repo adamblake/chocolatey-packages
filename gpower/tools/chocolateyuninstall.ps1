@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop';
 $packageName = 'gpower'
-$softwareName = 'G\*Power*'
+$softwareName = 'G*Power*'
 $installerType = 'MSI'
 $silentArgs    = "/qn /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
 $validExitCodes= @(0, 3010, 1641)
@@ -8,12 +8,13 @@ $uninstalled = $false
 [array]$key = Get-UninstallRegistryKey -SoftwareName $softwareName
 if ($key.Count -eq 1) {
   $key | % { 
-    $file = "$($_.UninstallString)"
-    Uninstall-ChocolateyPackage -PackageName $packageName `
-                                -FileType $installerType `
-                                -SilentArgs "$silentArgs" `
-                                -ValidExitCodes $validExitCodes `
-                                -File "$file"
+    $file = $($_.UninstallString)
+    Uninstall-ChocolateyPackage `
+      -PackageName $packageName `
+      -FileType $installerType `
+      -SilentArgs $silentArgs `
+      -ValidExitCodes $validExitCodes `
+      -File $file
   }
 } elseif ($key.Count -eq 0) {
   Write-Warning "$packageName has already been uninstalled by other means."
