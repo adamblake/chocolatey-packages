@@ -14,12 +14,12 @@
     <projectUrl>http://www.gpower.hhu.de/en.html</projectUrl>
     <iconUrl>https://cdn.rawgit.com/adamblake/chocolatey-packages/d9eedc69/gpower/icon.png</iconUrl>
     <copyright>1992-2014</copyright>
-    <licenseUrl>http://www.gpower.hhu.de/</licenseUrl>
+    <licenseUrl>http://www.gpower.hhu.de/en.html</licenseUrl>
     <!-- <requireLicenseAcceptance>true</requireLicenseAcceptance> -->
     <!-- <projectSourceUrl></projectSourceUrl> -->
     <docsUrl>http://www.gpower.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Psychologie/AAP/gpower/GPowerManual.pdf</docsUrl>
     <mailingListUrl>https://lists.uni-duesseldorf.de/mailman/listinfo/register-gpower</mailingListUrl>
-    <bugTrackerUrl>gpower-feedback@hhu.de</bugTrackerUrl>
+    <bugTrackerUrl>mailto:gpower-feedback@hhu.de</bugTrackerUrl>
     <tags>gpower statistics power effect size admin</tags>
     <summary>G*Power is a tool to compute statistical power analyses for many different inferential tests.</summary>
     <description>
