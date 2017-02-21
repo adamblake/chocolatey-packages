@@ -1,19 +1,22 @@
 ﻿$ErrorActionPreference = 'Stop';
+$uninstalled = $false
+
 $packageName = 'jasp'
 $softwareName = 'JASP*'
 $installerType = 'EXE' 
 $silentArgs = '/S'
 $validExitCodes = @(0)
-$uninstalled = $false
+
 [array]$key = Get-UninstallRegistryKey -SoftwareName $softwareName
 if ($key.Count -eq 1) {
   $key | % { 
     $file = "$($_.UninstallString)"
-    Uninstall-ChocolateyPackage -PackageName $packageName `
-                                -FileType $installerType `
-                                -SilentArgs "$silentArgs" `
-                                -ValidExitCodes $validExitCodes `
-                                -File "$file"
+    Uninstall-ChocolateyPackage `
+      -PackageName $packageName `
+      -FileType $installerType `
+      -SilentArgs "$silentArgs" `
+      -ValidExitCodes $validExitCodes `
+      -File $file
   }
 } elseif ($key.Count -eq 0) {
   Write-Warning "$packageName has already been uninstalled by other means."
