@@ -3,9 +3,9 @@
 $packageName  = 'jasp'
 $softwareName = 'JASP*'
 $toolsDir     = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
-$url32        = 'http://static.jasp-stats.org/JASP-0.8.1.0-Setup.exe'
-$checksum32   = 'a90a8d1223bcd3add8e0d569ef5dfa17d0901d93528d4520ebc9c2747e4e6bca'
-$version      = '0.8.1.0'
+$url32        = 'http://static.jasp-stats.org/JASP-0.8.1.1-Setup.exe'
+$checksum32   = '659ecb4bf13b7d6de8fd458c2b4a85a0d67a0a1bafc7ff2926828f1960820823'
+$version      = '0.8.1.1'
 
 $fileType       = $url32 -split "\." | select -Last 1
 $silentArgs     = '/S'
