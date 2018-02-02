@@ -4,7 +4,7 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>jasp</id>
-    <version>0.8.3.100</version>
+    <version>0.8.400</version>
     <packageSourceUrl>https://github.com/adamblake/chocolatey-packages/</packageSourceUrl>
     <owners>adamblake</owners>
 
