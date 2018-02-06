@@ -1,6 +1,15 @@
 import-module au
 
 $releases = 'https://jasp-stats.org/download/'
+$version_pattern = "JASP (\d+\.\d+\.\d+)"
+
+function global:au_GetLatest {
+	$request = Invoke-WebRequest -Uri $releases -UseBasicParsing
+	$check_version = ($request.content).tostring() | Select-String -Pattern $version_pattern | % {$_.Matches} | % {$_.Groups} | select -Last 1 | % {$_.Value}
+	$version = "$($check_version)00"
+	$url = "https://static.jasp-stats.org/JASP-$($check_version)-Setup.exe"
+	return @{ Version = $version; check_version = $check_version; URL32 = $url }
+}
 
 function global:au_SearchReplace {
     @{
@@ -10,17 +19,6 @@ function global:au_SearchReplace {
             "(^[$]version\s*=\s*)('.*')"    = "`$1'$($Latest.check_version)'"
         }
      }
-}
-
-function global:au_GetLatest {
-  $download_page = Invoke-WebRequest -Uri $releases -UseBasicParsing
-  
-  # JASP-0.8.0.0-Setup.exe
-  $re = 'JASP-.+-Setup.exe$'
-  $url     = $download_page.links | ? href -match $re | select -First 1 -expand href
-  $check_version = $url -split '-|.exe' | select -Last 1 -Skip 2
-  $version = "$($check_version)00"
-  return @{ Version = $version; check_version = $check_version; URL32 = $url }
 }
 
 update
