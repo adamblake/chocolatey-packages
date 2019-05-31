@@ -4,7 +4,7 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>jasp</id>
-    <version>0.8.500</version>
+    <version>0.9.2.0</version>
     <packageSourceUrl>https://github.com/adamblake/chocolatey-packages/</packageSourceUrl>
     <owners>adamblake</owners>
 
@@ -23,14 +23,14 @@
     <summary>JASP aims to be a complete statistical package for both Bayesian and Frequentist statistical methods, that is easy to use and familiar to users of SPSS.</summary>
     <description>
 # What is JASP?
-JASP is a fresh way to do statistics. Completely free, open-source, and cross-platform, JASP allows its users to conduct statistical analyses with ease, using a spreadsheet layout and a familiar drag-and-drop interface. JASP features popular classical analysis tools such as ANOVA and regression, but also contains their Bayesian counterparts. 
+JASP is a fresh way to do statistics. Completely free, open-source, and cross-platform, JASP allows its users to conduct statistical analyses with ease, using a spreadsheet layout and a familiar drag-and-drop interface. JASP features popular classical analysis tools such as ANOVA and regression, but also contains their Bayesian counterparts.
 
 # Why use JASP?
 JASP offers many advantages over popular competing packages. Compared to commercial packages such as SPSS, JASP is free, open-source, actively developed, and includes Bayesian methods for parameter estimation and hypothesis testing. Compared to free packages such as R, JASP offers a smooth “drag and drop” user experience that removes the requirement of computer programming that many students and practitioners experience as burdensome and distracting. Compared to all other packages, the JASP base package off ers a targeted and popular series of tests, both in their classical and Bayesian manifestations.
 
-# Cite JASP, please :)
-One of the best ways that you can support the JASP project is by citing it. Citations are an important measure of how widely software is used, and an important indicator to funding bodies of JASP’s relevance. At present, there are no publications you can cite for JASP (there are several in the pipeline, however!). For now, we suggest you use:
-JASP Team (2016). JASP (Version 0.8.0.1)[Computer software].
+# Using and citing JASP in research
+JASP can be used for research just like one would use SPSS and R. We are completing a series of invited peer-reviewed articles that outline the main philosophy and basic functionality of JASP, and these articles may be cited whenever JASP is used for research. The current citation for the package itself is:
+The JASP Team (2019). JASP (Version 0.9.2.0)[Computer software]. https://jasp-stats.org/.
     </description>
     <releaseNotes>https://jasp-stats.org/download/</releaseNotes>
   </metadata>
