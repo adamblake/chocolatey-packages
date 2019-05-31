@@ -2,10 +2,10 @@
 
 $packageName    = 'gpower'
 $toolsDir       = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
-$url32          = 'http://www.gpower.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Psychologie/AAP/gpower/GPowerWin_3.1.9.2.zip'
-$checksum32     = '8074323e6c554c3953edd7e821a5633912d53d47871193cc52eb282bae37ccbe'
+$url32          = 'http://www.gpower.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Psychologie/AAP/gpower/GPowerWin_3.1.9.4.zip'
+$checksum32     = '32311eaf7dd984db429fcaba2641594fae4780cbfeb7b97a51e172850f7d311e'
 $checksumType   = 'sha256'
-$fileType       = 'MSI'
+$fileType       = 'msi'
 $silentArgs     = "/qn /norestart /l*v `"$($env:TEMP)\$($packageName).$($env:chocolateyPackageVersion).MsiInstall.log`""
 $validExitCodes = @(0, 3010, 1641)
 
