@@ -1,57 +1,38 @@
-﻿$ErrorActionPreference = 'Stop';
+﻿$ErrorActionPreference = 'Stop'
 
-$packageName    = 'jasp'
-$softwareName   = 'JASP*'
-$toolsDir       = $(Split-Path -parent $MyInvocation.MyCommand.Definition)
-$url32          = 'https://static.jasp-stats.org/JASP-0.9.2.0-32-bit.msi'
-$checksum32     = 'ebfb146f894db0b4a3994a26d9d43ef1bb2b198487fbf48755f32b4451c69298'
-$url64          = 'https://static.jasp-stats.org/JASP-0.9.2.0-64-bit.msi'
-$checksum64     = '02e8f5a285789d5b91466ec6b1545164b28cf2d33f8ba2df1722d39406ce3f24'
-$version        = '0.9.2.0'
-$fileType       = "msi"
-$silentArgs     = '/quiet'
-$validExitCodes = @(0, 3010, 1641)
+$packageName   = 'jasp'
+$fileType      = 'msi'
+$toolsDir      = Split-Path $MyInvocation.MyCommand.Definition
+$embedded_path = gi "$toolsDir\*.$fileType"
+$url32         = 'http://static.jasp-stats.org/JASP-0.11.1.0-win32.msi'
+$url64         = 'http://static.jasp-stats.org/JASP-0.11.1.0-x64.msi'
+$checksum32    = 'E15463747A24A7D0E306E1A27772CC61AC6DFE76ADE6C1D6B2064E54ECC6F490'
+$checksum64    = 'AD0E4D2C2228BFE9E80A1AD6B5E739704C2F6EE15E6E999D58D9A73D33E01438'
 
 $packageArgs = @{
   packageName    = $packageName
-  softwareName   = $softwareName
+  softwareName   = $packageName
   unzipLocation  = $toolsDir
   fileType       = $fileType
-  silentArgs     = $silentArgs
-  validExitCodes = $validExitCodes
   url            = $url32
+  url64bit       = $url64
   checksum       = $checksum32
   checksumType   = 'sha256'
-  url64bit       = $url64
   checksum64     = $checksum64
   checksumType64 = 'sha256'
+  silentArgs     = "/qn"
+  validExitCodes = @(0, 3010, 1641)
 }
 
-[array]$key = Get-UninstallRegistryKey -SoftwareName $softwareName
-if ($key.Count -eq 0) {
-  Install-ChocolateyPackage @packageArgs
-} elseif ($key.Count -eq 1) {
-  $currentVersion = $($key.DisplayName -split " " | select -Last 1).Trim()
-  if ($currentVersion -lt $version) {
-    $key | % {
-      $file = "$($_.UninstallString)"
-      Uninstall-ChocolateyPackage `
-        -PackageName $packageName `
-        -FileType $fileType `
-        -SilentArgs "$silentArgs" `
-        -ValidExitCodes $validExitCodes `
-        -File $file
-    }
-    Install-ChocolateyPackage @packageArgs
-  } elseif ($currentVersion -eq $version) {
-    Write-Warning "$($key.DisplayName) is already installed. Added to your Chocolatey programs but not re-installed."
-  } elseif ($currentVersion -gt $version) {
-    Write-Warning "$($key.DisplayName) is newer than the Chocolatey version ($($version)). Added to your Chocolatey programs but not re-installed."
-  }
-} elseif ($key.Count -gt 1) {
-  Write-Warning "$key.Count matches found!"
-  Write-Warning "Please alert package maintainer the following keys were matched:"
-  $key | % {Write-Warning "- $_.DisplayName"}
-  Write-Warning "To prevent accidental data loss, no programs will be uninstalled."
-  Write-Warning "Added to your Chocolatey programs but not re-installed. You may need to run choco upgrade."
-}
+Install-ChocolateyPackage @packageArgs
+rm $embedded_path -ea 0
+
+$packageName = $packageArgs.packageName
+$installLocation = Get-AppInstallLocation $packageName
+if (!$installLocation)  { Write-Warning "Can't find $packageName install location"; return }
+Write-Host "$packageName installed to '$installLocation'"
+
+# Register-Application "$installLocation\$packageName.\$fileType"
+# Write-Host "$packageName registered as $packageName"
+
+start "$installLocation\$packageName.exe"

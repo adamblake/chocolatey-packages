@@ -1,31 +1,58 @@
 import-module au
+. $PSScriptRoot\..\_scripts\all.ps1
 
-$releases = 'https://jasp-stats.org/download/'
-$version_pattern = "JASP (\d+\.\d+\.\d+(?:\.\d+)?)"
-$current_year = Get-Date -UFormat "%Y"
-
-function global:au_GetLatest {
-	$request = Invoke-WebRequest -Uri $releases -UseBasicParsing
-	$check_version = ($request.content).tostring() | Select-String -Pattern $version_pattern | % {$_.Matches} | % {$_.Groups} | select -Last 1 | % {$_.Value}
-	$url32 = "https://static.jasp-stats.org/JASP-$($check_version)-32-bit.msi"
-    $url64 = "https://static.jasp-stats.org/JASP-$($check_version)-64-bit.msi"
-	return @{ Version = $check_version; check_version = $check_version; URL32 = $url32; URL64 = $url64 }
-}
+$releases    = [System.Uri]'https://jasp-stats.org/download/'
 
 function global:au_SearchReplace {
-    @{
-        'tools\chocolateyInstall.ps1' = @{
-            "(^[$]url32\s*=\s*)('.*')"      = "`$1'$($Latest.URL32)'"
-            "(^[$]checksum32\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
-            "(^[$]url64\s*=\s*)('.*')"      = "`$1'$($Latest.URL64)'"
-            "(^[$]checksum64\s*=\s*)('.*')" = "`$1'$($Latest.Checksum64)'"
-            "(^[$]version\s*=\s*)('.*')"    = "`$1'$($Latest.check_version)'"
+   @{
+        ".\tools\chocolateyInstall.ps1" = @{
+            "(?i)(^\s*[$]packageName\s*=\s*)('.*')"= "`$1'$($Latest.PackageName)'"
+            "(?i)(^\s*[$]fileType\s*=\s*)('.*')"   = "`$1'$($Latest.FileType)'"
+            "(?i)(^\s*[$]url32\s*=\s*)('.*')"      = "`$1'$($Latest.URL32)'"
+            "(?i)(^\s*[$]url64\s*=\s*)('.*')"      = "`$1'$($Latest.URL64)'"
+            "(?i)(^\s*[$]checksum32\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
+            "(?i)(^\s*[$]checksum64\s*=\s*)('.*')" = "`$1'$($Latest.Checksum64)'"
         }
-        'jasp.nuspec' = @{
-        	"JASP Team \(\d{4}\). JASP \(Version \d+(?:\.\d+){2,3}\)\[Computer software\]" = "JASP Team ($($current_year)). JASP (Version $($Latest.check_version))[Computer software]"
-            "\<version\>\d+\.\d+\.\d+(?:\.\d+)?" = "<version>$($Latest.check_version)"
+
+        "$($Latest.PackageName).nuspec" = @{
+            "(\<releaseNotes\>).*?(\</releaseNotes\>)" = "`${1}$($Latest.ReleaseNotes)`$2"
         }
-     }
+
+        ".\README.md" = @{
+            "(JASP \(Version ).*(\)\[Computer software\])" = "`${1}$($Latest.Version)`$2"
+        }
+
+        ".\legal\VERIFICATION.txt" = @{
+          "(?i)(\s+x32:).*"            = "`${1} $($Latest.URL32)"
+          "(?i)(\s+x64:).*"            = "`${1} $($Latest.URL64)"
+          "(?i)(checksum32:).*"        = "`${1} $($Latest.Checksum32)"
+          "(?i)(checksum64:).*"        = "`${1} $($Latest.Checksum64)"
+        }
+    }
 }
 
-update
+function global:au_BeforeUpdate() {
+    Get-RemoteFiles -Purge
+    $Latest.Checksum32 = Get-RemoteChecksum $Latest.Url32
+    $Latest.Checksum64 = Get-RemoteChecksum $Latest.Url64
+}
+
+function global:au_AfterUpdate  {
+    Set-DescriptionFromReadme -SkipFirst 2
+}
+
+function global:au_GetLatest {
+    $download_page = Invoke-WebRequest -Uri $releases
+    $re  = "://static\.jasp-stats\.org/JASP-.*-win32\.msi"
+    $url = $download_page.links | ? href -match $re | select -First 1 -expand href
+    $version = $url -split '-|.msi' | select -Last 1 -Skip 2
+
+    return @{
+        URL32        = $url
+        URL64        = $url.Replace("-win32", "-x64")
+        Version      = $version
+        ReleaseNotes = "https://jasp-stats.org/release-notes/"
+    }
+}
+
+update -ChecksumFor none

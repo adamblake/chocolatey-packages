@@ -1,0 +1,24 @@
+VERIFICATION
+
+Verification is intended to assist the Chocolatey moderators and community
+in verifying that this package's contents are trustworthy.
+
+Package can be verified like this:
+
+1. Go to
+
+   x32: http://static.jasp-stats.org/JASP-0.11.1.0-win32.msi
+   x64: http://static.jasp-stats.org/JASP-0.11.1.0-x64.msi
+
+   to download the installer.
+
+2. You can use one of the following methods to obtain the SHA256 checksum:
+   - Use powershell function 'Get-FileHash' with the file to check
+   - Use Chocolatey utility 'checksum.exe' with the file to check
+   - Use AU function 'Get-RemoteChecksum' with the URL to check
+
+   checksum32: E15463747A24A7D0E306E1A27772CC61AC6DFE76ADE6C1D6B2064E54ECC6F490
+   checksum64: AD0E4D2C2228BFE9E80A1AD6B5E739704C2F6EE15E6E999D58D9A73D33E01438
+
+File 'license.txt' is obtained from:
+   https://www.gnu.org/licenses/agpl-3.0.nl.html
