@@ -4,10 +4,10 @@ $packageName   = 'jasp'
 $fileType      = 'msi'
 $toolsDir      = Split-Path $MyInvocation.MyCommand.Definition
 $embedded_path = gi "$toolsDir\*.$fileType"
-$url32         = 'http://static.jasp-stats.org/JASP-0.11.1.0-win32.msi'
-$url64         = 'http://static.jasp-stats.org/JASP-0.11.1.0-x64.msi'
-$checksum32    = 'E15463747A24A7D0E306E1A27772CC61AC6DFE76ADE6C1D6B2064E54ECC6F490'
-$checksum64    = 'AD0E4D2C2228BFE9E80A1AD6B5E739704C2F6EE15E6E999D58D9A73D33E01438'
+$url32         = 'https://static.jasp-stats.org/JASP-0.12.2-32bit.msi'
+$url64         = 'https://static.jasp-stats.org/JASP-0.12.2-64bit.msi'
+$checksum32    = 'af8a68cc7ad7acae4dfff47ba6a146801c2b459afdd6eff2f7e7e12751bd8aab'
+$checksum64    = '77ffd1a91fa5284c729e6052928a447c7c1d48b177f6040e03f746741ad0cfb4'
 
 $packageArgs = @{
   packageName    = $packageName

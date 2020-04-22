@@ -6,7 +6,7 @@
 
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>jasp</id>
-    <version>0.11.1.0</version>
+    <version>0.12.1</version>
     <packageSourceUrl>https://github.com/adamblake/chocolatey-packages</packageSourceUrl>
     <owners>Adam Blake</owners>
 
@@ -14,7 +14,9 @@
     <title>JASP</title>
     <authors>JASP</authors>
     <summary>JASP aims to be a complete statistical package for both Bayesian and Frequentist statistical methods, that is easy to use and familiar to users of SPSS.</summary>
-    <description><![CDATA[## What is JASP?
+    <description><![CDATA[# <img src="https://cdn.rawgit.com/adamblake/chocolatey-packages/master/jasp/icon.png" width="48" height="48"/> [JASP](https://chocolatey.org/packages/jasp)
+
+## What is JASP?
 
 JASP is a fresh way to do statistics. Completely free, open-source, and cross-platform, JASP allows its users to conduct statistical analyses with ease, using a spreadsheet layout and a familiar drag-and-drop interface. JASP features popular classical analysis tools such as ANOVA and regression, but also contains their Bayesian counterparts.
 
@@ -25,7 +27,8 @@ JASP offers many advantages over popular competing packages. Compared to commerc
 ## Using and citing JASP in research
 
 JASP can be used for research just like one would use SPSS and R. We are completing a series of invited peer-reviewed articles that outline the main philosophy and basic functionality of JASP, and these articles may be cited whenever JASP is used for research. The current citation for the package itself is:
-The JASP Team (2019). JASP (Version 0.11.1.0)[Computer software]. https://jasp-stats.org/.
+
+The JASP Team (2020). JASP (Version 0.12.1)[Computer software]. https://jasp-stats.org/.
 ]]></description>
     <projectUrl>http://jasp-stats.org/</projectUrl>
     <tags>jasp statistics spss r bayesian admin</tags>

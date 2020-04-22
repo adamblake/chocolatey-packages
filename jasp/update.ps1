@@ -1,58 +1,70 @@
 import-module au
 . $PSScriptRoot\..\_scripts\all.ps1
 
-$releases    = [System.Uri]'https://jasp-stats.org/download/'
+$au_Push = 'false';
 
-function global:au_SearchReplace {
-   @{
-        ".\tools\chocolateyInstall.ps1" = @{
-            "(?i)(^\s*[$]packageName\s*=\s*)('.*')"= "`$1'$($Latest.PackageName)'"
-            "(?i)(^\s*[$]fileType\s*=\s*)('.*')"   = "`$1'$($Latest.FileType)'"
-            "(?i)(^\s*[$]url32\s*=\s*)('.*')"      = "`$1'$($Latest.URL32)'"
-            "(?i)(^\s*[$]url64\s*=\s*)('.*')"      = "`$1'$($Latest.URL64)'"
-            "(?i)(^\s*[$]checksum32\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
-            "(?i)(^\s*[$]checksum64\s*=\s*)('.*')" = "`$1'$($Latest.Checksum64)'"
-        }
+# Update scripts generally need to implement 2 functions:
+# - au_GetLatest:     to get the installer information
+# - au_SearchReplace: to update the package with the information
 
-        "$($Latest.PackageName).nuspec" = @{
-            "(\<releaseNotes\>).*?(\</releaseNotes\>)" = "`${1}$($Latest.ReleaseNotes)`$2"
-        }
 
-        ".\README.md" = @{
-            "(JASP \(Version ).*(\)\[Computer software\])" = "`${1}$($Latest.Version)`$2"
-        }
-
-        ".\legal\VERIFICATION.txt" = @{
-          "(?i)(\s+x32:).*"            = "`${1} $($Latest.URL32)"
-          "(?i)(\s+x64:).*"            = "`${1} $($Latest.URL64)"
-          "(?i)(checksum32:).*"        = "`${1} $($Latest.Checksum32)"
-          "(?i)(checksum64:).*"        = "`${1} $($Latest.Checksum64)"
-        }
-    }
-}
-
-function global:au_BeforeUpdate() {
-    Get-RemoteFiles -Purge
-    $Latest.Checksum32 = Get-RemoteChecksum $Latest.Url32
-    $Latest.Checksum64 = Get-RemoteChecksum $Latest.Url64
-}
-
-function global:au_AfterUpdate  {
-    Set-DescriptionFromReadme -SkipFirst 2
-}
-
+# Gets package information values
+#
+# Returns a HashTable that is used to update $global:Latest. The values in
+# $global:Latest are available throughout the package update.
 function global:au_GetLatest {
-    $download_page = Invoke-WebRequest -Uri $releases
-    $re  = "://static\.jasp-stats\.org/JASP-.*-win32\.msi"
-    $url = $download_page.links | ? href -match $re | select -First 1 -expand href
-    $version = $url -split '-|.msi' | select -Last 1 -Skip 2
+  $download_uri = "https://jasp-stats.org/download/"
+  $download_page = Invoke-WebRequest -Uri $download_uri -UseBasicParsing
 
-    return @{
-        URL32        = $url
-        URL64        = $url.Replace("-win32", "-x64")
-        Version      = $version
-        ReleaseNotes = "https://jasp-stats.org/release-notes/"
-    }
+  $link_pat = 'http[s]?://static\.jasp-stats\.org/JASP-(\d+\.\d+\.\d+).*\.msi$'
+
+  $version = $download_page.Links |
+    % {$_.href} |
+    Select-String -Pattern $link_pat |
+    % {$_.Matches.Groups[1].Value}
+
+  return @{
+    Version = $version
+    URL32 = "https://static.jasp-stats.org/JASP-{0}-32bit.msi" -f $version
+    URL64 = "https://static.jasp-stats.org/JASP-{0}-64bit.msi" -f $version
+  }
 }
 
-update -ChecksumFor none
+
+# Creates a HashTable for updating the package information.
+#
+# The HashTable is of the form [file name] = [lookup table], and the lookup
+# tables are HashTables of the form [regular expression] = replacement.
+#
+# Notes:
+# - File names should be relative to this script.
+# - The regular expression will not match multiple lines.
+# - You can make use of $global:Latest, which holds the values from au_GetLatest
+function global:au_SearchReplace {
+  $year = Get-Date -Format "yyyy"
+  $version = "{0}.{1}.{2}" -f $Latest.Version.split("\.", 4)
+  $citeform = "The JASP Team ({0}). JASP (Version {1})[Computer software]. {2}."
+  $citation = $citeform -f $year, $version, "https://jasp-stats.org/"
+
+  @{
+    "README.md" = @{
+      "^The JASP Team \(\d+\)\. JASP \(Version [0-9.]+\).*" = $citation
+    }
+
+    "./legal/VERIFICATION.txt" = @{
+      "(?i)(\s+x32:).*"            = "`${1} $($Latest.URL32)"
+      "(?i)(\s+x64:).*"            = "`${1} $($Latest.URL64)"
+      "(?i)(checksum32:).*"        = "`${1} $($Latest.Checksum32)"
+      "(?i)(checksum64:).*"        = "`${1} $($Latest.Checksum64)"
+    }
+
+    "./tools/chocolateyInstall.ps1" = @{
+      "(^[$]url32\s*=\s*)('.*')"      = "`${1}'$($Latest.URL32)'"
+      "(^[$]url64\s*=\s*)('.*')"      = "`${1}'$($Latest.URL64)'"
+      "(^[$]checksum32\s*=\s*)('.*')" = "`${1}'$($Latest.Checksum32)'"
+      "(^[$]checksum64\s*=\s*)('.*')" = "`${1}'$($Latest.Checksum64)'"
+    }
+  }
+}
+
+update
