@@ -4,22 +4,22 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>gpower</id>
-    <version>3.1.9.400</version>
+    <version>3.1.9.700</version>
     <packageSourceUrl>https://github.com/adamblake/chocolatey-packages/</packageSourceUrl>
     <owners>adamblake</owners>
 
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <title>G*Power</title>
     <authors>Axel Buchner, Edgar Erdfelder, Franz Faul, Albert-Georg Lang</authors>
-    <projectUrl>http://www.gpower.hhu.de/en.html</projectUrl>
+    <projectUrl>https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html</projectUrl>
     <iconUrl>https://cdn.rawgit.com/adamblake/chocolatey-packages/d9eedc69/gpower/icon.png</iconUrl>
     <copyright>1992-2014</copyright>
-    <licenseUrl>http://www.gpower.hhu.de/en.html</licenseUrl>
+    <licenseUrl>https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html</licenseUrl>
     <!-- <requireLicenseAcceptance>true</requireLicenseAcceptance> -->
     <!-- <projectSourceUrl></projectSourceUrl> -->
     <docsUrl>http://www.gpower.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Psychologie/AAP/gpower/GPowerManual.pdf</docsUrl>
     <mailingListUrl>https://lists.uni-duesseldorf.de/mailman/listinfo/register-gpower</mailingListUrl>
-    <bugTrackerUrl>mailto:gpower-feedback@hhu.de</bugTrackerUrl>
+    <bugTrackerUrl>http://www.gpower.hhu.de/en.html</bugTrackerUrl>
     <tags>gpower statistics power effect size admin</tags>
     <summary>G*Power is a tool to compute statistical power analyses for many different inferential tests.</summary>
     <description>
@@ -33,7 +33,7 @@ Faul, F., Erdfelder, E., Lang, A.-G., &amp; Buchner, A. (2007). G\*Power 3: A fl
 
 Faul, F., Erdfelder, E., Buchner, A., &amp; Lang, A.-G. (2009). Statistical power analyses using G\*Power 3.1: Tests for correlation and regression analyses. *Behavior Research Methods, 41*, 1149-1160. [Download PDF](http://www.gpower.hhu.de/fileadmin/redaktion/Fakultaeten/Mathematisch-Naturwissenschaftliche_Fakultaet/Psychologie/AAP/gpower/GPower31-BRM-Paper.pdf)
     </description>
-    <releaseNotes>http://www.gpower.hhu.de/en.html</releaseNotes>
+    <releaseNotes>https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html</releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />

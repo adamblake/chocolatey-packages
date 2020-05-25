@@ -21,12 +21,12 @@ environment:
   # Github token to commit pushed packages to repository
   github_user_repo: adamblake/chocolatey-packages
   github_api_key:
-    secure: pIzb0wJQ1iUZEco+axIR+RzAakqOFewynuq4D23D9wr29onvZQlCxr18eGr2lmxW
+    secure: L9+dzu0hL/MJbEEvSQlxIUrPn+L4LSDEKBgcyF2OJpg26snssC8FvB6Muy+ZOHT/
 
 
   # Mail credentials - for error notifications
   mail_user:
-    secure: K5c4XVVvuaZ0E1K0v1hUtN+dR8BLWFS47GRO0Wm8Ls8=
+    secure: 3+5jD8OWI4OTiRNImmCmrZKUeBrBmCgf4N3AYJbn1Zo=
   mail_pass:
     secure: pluWPDmGtyCet+qlCnTXFQ==
   mail_server: smtp.gmail.com

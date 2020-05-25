@@ -2,8 +2,7 @@
 
 $packageName   = 'jasp'
 $fileType      = 'msi'
-$toolsDir      = Split-Path $MyInvocation.MyCommand.Definition
-$embedded_path = gi "$toolsDir\*.$fileType"
+$toolsDir      = $PSScriptRoot
 $url32         = 'https://static.jasp-stats.org/JASP-0.12.2-32bit.msi'
 $url64         = 'https://static.jasp-stats.org/JASP-0.12.2-64bit.msi'
 $checksum32    = 'af8a68cc7ad7acae4dfff47ba6a146801c2b459afdd6eff2f7e7e12751bd8aab'
@@ -20,19 +19,8 @@ $packageArgs = @{
   checksumType   = 'sha256'
   checksum64     = $checksum64
   checksumType64 = 'sha256'
-  silentArgs     = "/qn"
+  silentArgs     = "/quiet /norestart"
   validExitCodes = @(0, 3010, 1641)
 }
 
 Install-ChocolateyPackage @packageArgs
-rm $embedded_path -ea 0
-
-$packageName = $packageArgs.packageName
-$installLocation = Get-AppInstallLocation $packageName
-if (!$installLocation)  { Write-Warning "Can't find $packageName install location"; return }
-Write-Host "$packageName installed to '$installLocation'"
-
-# Register-Application "$installLocation\$packageName.\$fileType"
-# Write-Host "$packageName registered as $packageName"
-
-start "$installLocation\$packageName.exe"

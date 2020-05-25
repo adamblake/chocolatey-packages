@@ -1,6 +1,6 @@
 
 
-# <img src="https://cdn.rawgit.com/adamblake/chocolatey-packages/master/jasp/icon.png" width="48" height="48"/> [JASP](https://chocolatey.org/packages/jasp)
+# [JASP](https://chocolatey.org/packages/jasp)
 
 ## What is JASP?
 
