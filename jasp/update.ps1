@@ -16,7 +16,7 @@ function global:au_GetLatest {
   $download_uri = "https://jasp-stats.org/download/"
   $download_page = Invoke-WebRequest -Uri $download_uri -UseBasicParsing
 
-  $link_pat = 'http[s]?://static\.jasp-stats\.org/JASP-(\d+\.\d+\.\d+).*\.msi$'
+  $link_pat = 'http[s]?://static\.jasp-stats\.org/JASP-(\d+(?:[.]\d+)+).*\.msi$'
 
   $version = $download_page.Links |
     % {$_.href} |
