@@ -3,10 +3,10 @@
 $packageName   = 'jasp'
 $fileType      = 'msi'
 $toolsDir      = $PSScriptRoot
-$url32         = 'https://static.jasp-stats.org/JASP-0.12.2-32bit.msi'
-$url64         = 'https://static.jasp-stats.org/JASP-0.12.2-64bit.msi'
-$checksum32    = 'af8a68cc7ad7acae4dfff47ba6a146801c2b459afdd6eff2f7e7e12751bd8aab'
-$checksum64    = '77ffd1a91fa5284c729e6052928a447c7c1d48b177f6040e03f746741ad0cfb4'
+$url32         = 'https://static.jasp-stats.org/JASP-0.13.1.0-32bit.msi'
+$url64         = 'https://static.jasp-stats.org/JASP-0.13.1.0-64bit.msi'
+$checksum32    = 'bfea54637818ba79068cc1e36871348d235c2eabeae461af608ffd8c71d2ea76'
+$checksum64    = '73222939f7bfa60daa8af9ed8c47fcbd785334dee4b6354702ed7a69a886f562'
 
 $packageArgs = @{
   packageName    = $packageName
