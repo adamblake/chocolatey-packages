@@ -13,15 +13,10 @@ $au_Push = 'false';
 # Returns a HashTable that is used to update $global:Latest. The values in
 # $global:Latest are available throughout the package update.
 function global:au_GetLatest {
-  $download_uri = "https://jasp-stats.org/download/"
-  $download_page = Invoke-WebRequest -Uri $download_uri -UseBasicParsing
-
-  $link_pat = 'http[s]?://static\.jasp-stats\.org/JASP-(\d+(?:[.]\d+)+).*\.msi$'
-
-  $version = $download_page.Links |
-    % {$_.href} |
-    Select-String -Pattern $link_pat |
-    % {$_.Matches.Groups[1].Value}
+  $github_repo = "jasp-stats/jasp-desktop"
+  $releases = "https://api.github.com/repos/$github_repo/releases"
+  $full_version = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].name
+  $version = $full_version.Split(".")[0, 1, 2] -join "."
 
   return @{
     Version = $version
